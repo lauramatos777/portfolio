@@ -323,10 +323,72 @@ ol {
 }
 
 .site-footer {
-  padding-top: 1rem;
+  display: grid;
+  width: 100%;
+  justify-items: center;
+  justify-content: center;
+  align-items: center;
+  gap: 1rem;
+  padding-top: clamp(2rem, 5vw, 3.5rem);
   border-top: 1px solid var(--color-border);
   color: var(--color-text-muted);
   font-size: 0.95rem;
+  text-align: center;
+}
+
+.site-footer__message {
+  color: var(--color-brown);
+  font-family: var(--font-display);
+  font-size: clamp(1.45rem, 3vw, 2rem);
+  font-style: italic;
+  line-height: 1.2;
+}
+
+.site-footer__links {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.65rem;
+  color: var(--color-text-muted);
+  font-size: 0.9rem;
+}
+
+.site-footer__links a {
+  position: relative;
+  color: var(--color-brown);
+  font-weight: 600;
+}
+
+.site-footer__links a::after {
+  position: absolute;
+  right: 0;
+  bottom: -0.2rem;
+  left: 0;
+  height: 1px;
+  background: var(--color-olive);
+  content: "";
+  transform: scaleX(0);
+  transform-origin: right;
+  transition: transform var(--transition-fast);
+}
+
+.site-footer__links a:hover {
+  color: var(--color-olive);
+}
+
+.site-footer__links a:hover::after,
+.site-footer__links a:focus-visible::after {
+  transform: scaleX(1);
+  transform-origin: left;
+}
+
+.site-footer__links a:focus-visible {
+  outline: 2px solid var(--color-brown);
+  outline-offset: 4px;
+}
+
+.site-footer__copyright {
+  font-size: 0.84rem;
 }
 
 .button {
@@ -599,8 +661,7 @@ ol {
 }
 
 @media (max-width: 48rem) {
-  .site-header,
-  .site-footer {
+  .site-header {
     flex-direction: column;
     align-items: flex-start;
   }
